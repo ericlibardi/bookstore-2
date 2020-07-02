@@ -85,9 +85,6 @@ export default class App extends Component {
     }
 
     render() {
-       console.log(this.state.imgIndex)
-
-       console.log(this.state.image)
         
         return (
             <div>
@@ -109,7 +106,7 @@ export default class App extends Component {
                 <div id="body">
                     {this.state.data.map((book, index)=> {
                     return (
-                        <div className="flip-card">
+                        <div className="flip-card" key={index}>
                             <div className="flip-card-inner">
                                 <div className="flip-card-front">
                                     <img src={book.cover} alt={book.title} ></img>
@@ -133,8 +130,8 @@ export default class App extends Component {
                                 <img src={this.state.image} /*style="width:100%"*/ alt="{book.title}"></img>
                             </div>
               /*      )})}  */}
-                            <a className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</a>
-                            <a className="next" onClick={() => this.plusSlides(1)}>&#10095;</a>
+                            <p className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</p>
+                            <p className="next" onClick={() => this.plusSlides(1)}>&#10095;</p>
                             <div className="caption-container">
                                 <p id="caption"></p>
                             </div>

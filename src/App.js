@@ -17,7 +17,7 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.myjson.com/bins/zyv02', {
+        fetch('https://api.jsonbin.io/b/5ea833484c87c3359a632938', {
             method: "GET",
             mode: 'cors',
             cache: 'default' 
@@ -28,8 +28,9 @@ export default class App extends Component {
             }
 
         openModal = (n) => {
+            console.log(this.state.data)
             document.getElementById("myModal").style.display = "block";
-            this.setState({image: this.state.data[n].detail})
+            this.setState({image: this.state.data[n].details})
             this.setState({imgIndex: n})
         }
 
@@ -40,16 +41,16 @@ export default class App extends Component {
 
         plusSlides = (plus) => {
             if (this.state.imgIndex + 1 + plus > this.state.data.length) {
-                this.setState({image: [this.state.data[0].detail]})
+                this.setState({image: [this.state.data[0].details]})
                 this.setState({imgIndex: 0})
             }else if (this.state.imgIndex + plus < 0) {
-                this.setState({image: [this.state.data[this.state.data.length -1].detail]})
+                this.setState({image: [this.state.data[this.state.data.length -1].details]})
                 this.setState({imgIndex: this.state.data.length -1})
             }else if (plus > 0) {
-                this.setState({image: [this.state.data[this.state.imgIndex +1].detail]})
+                this.setState({image: [this.state.data[this.state.imgIndex +1].details]})
                 this.setState({imgIndex: this.state.imgIndex + plus})
             } else if (plus < 0) {
-                this.setState({image: [this.state.data[this.state.imgIndex -1].detail]})
+                this.setState({image: [this.state.data[this.state.imgIndex -1].details]})
                 this.setState({imgIndex: this.state.imgIndex + plus})
             }}
 
@@ -84,8 +85,9 @@ export default class App extends Component {
     }
 
     render() {
-       console.log(this.state.data) 
-       console.log(this.state.value)
+       console.log(this.state.imgIndex)
+
+       console.log(this.state.image)
         
         return (
             <div>
